@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Intro to SceneView - Create a 3D map</title>
+<!-- Bootstrap4 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+<!-- Own CSS -->
+<link rel="stylesheet" href="./static/css/main.css">
+<script src="https://js.arcgis.com/4.10/"></script>
+<script>
+require([
+  "esri/Map",
+  "esri/views/SceneView"
+], function(Map, SceneView){
+  var map = new Map({
+    basemap: "dark-gray",
+    ground: "world-elevation"
+  });
+  var view = new SceneView({
+    container: "viewDiv", // Reference to the scene div created in step 5
+    map: map, // Reference to the map object created before the scene
+    scale: 25000, // Sets the initial scale to 1:50,000,000
+    center: [-71.06, 42.36] // Sets the center point of view with lon/lat
+  });
+});
+</script>
+</head>
+<body>
+  <header>
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="./index.html">Capstone</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              {% if title == 'Home' %}
+              <li class="nav-item active">
+              {% else %}
+              <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              {% if title == 'Test' %}
+              <li class="nav-item active">
+              {% else %}
+              <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="{{ url_for('test') }}">Test</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div> <!-- ends col 12 -->
+    </div> <!-- ends row for nav -->
+  </header>
+  <div id="viewDiv"></div>
+
+  <!-- jQuery JS -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+</body>
+</html>

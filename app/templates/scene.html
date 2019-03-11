@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block metadata %}
+  <ul>
+    {% for key, item in metadata %}
+      <meta name="{{key}}" content="{{ item }}" />
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <!-- ArcGIS API CSS -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <!-- ArcGIS API JS -->
+  <script src="https://js.arcgis.com/4.10/"></script>
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/SceneView"
+    ], function(Map, SceneView) {
+      // Code to create the map and view will go here
+      var map = new Map({
+        basemap: "dark-gray",
+        ground: "world-elevation"
+      });
+      var view = new SceneView({
+        container: "viewDiv", // Reference to the DOM node that will contain the view
+        map: map, // References the map object created above
+        scale: 25000, // Sets the initial scale to 1:25,000
+        center: [-71.06, 42.36], // Sets the center point of view with lon/lat
+      });
+    });
+  </script>
+{% endblock %}
+
+
+{% block app_content %}
+  <div id="viewDiv"></div>
+{% endblock %}
