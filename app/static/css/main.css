@@ -3,11 +3,19 @@ body {
 }
 
 .top-margin-lg {
+  margin-top: 100px;
+}
+
+.top-margin-md {
   margin-top: 50px;
 }
 
 .bottom-margin-sm {
   margin-bottom: 30px;
+}
+
+.text-center {
+  text-align: center;
 }
 
 html, body, #viewDiv {
@@ -19,8 +27,8 @@ html, body, #viewDiv {
 
 #buttonsDiv {
 position: absolute;
-top: 12px;
-right: 12px;
+top: 85px;
+right: 30px;
 padding: 12px;
 background-color: rgba(200, 200, 200, 0.5);
 border: 1px solid black;

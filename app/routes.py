@@ -1,20 +1,27 @@
 from app import app
 from flask import render_template, url_for, redirect
-from app.forms import ZoomForm
+from app.forms import LatLongForm, AddressForm
 
 
 @app.route('/')
 @app.route('/index')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    form = ZoomForm()
+    form_LatLong = LatLongForm()
+    if form_LatLong.validate_on_submit():
+        lat = form_LatLong.lat.data
+        long = form_LatLong.long.data
+        return render_template('index.html', title='Home', form_LatLong=form_LatLong, lat=lat, long=long)
 
-    if form.validate_on_submit():
-        lat = form.lat.data
-        long = form.long.data
-        return redirect(url_for('scene', lat=lat, long=long))
+    form_Address = AddressForm()
+    if form_Address.validate_on_submit():
+        street = form_Address.street.data
+        city = form_Address.city.data
+        state = form_Address.state.data
+        zip = int(form_Address.zip.data)
+        return render_template('index.html', title='Home', form_Address=form_Address, street=street, city=city, state=state, zip=zip)
 
-    return render_template('index.html', title='Home', form=form)
+    return render_template('index.html', title='Home', form_LatLong=form_LatLong, form_Address=form_Address)
 
 @app.route('/scene')
 def scene():

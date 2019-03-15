@@ -31,10 +31,8 @@
       var view = new SceneView({
         container: "viewDiv", // Reference to the DOM node that will contain the view
         map: map, // References the map object created above
-        scale: 25000, // Sets the initial scale to 1:25,000
-        center: [-71.06, 42.36], // Sets the center point of view with lon/lat
         camera: {
-          position: [7.654, 45.919, 5183],
+          position: [-71.058423, 42.34, 400], // latitude, longitude, altitude in meters
           tilt: 80
         }
       });

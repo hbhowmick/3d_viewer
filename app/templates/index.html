@@ -3,11 +3,18 @@
 
 {% block app_content %}
   <div class="container">
-    <div class="row top-margin-lg">
+    <div class="row top-margin-md">
       <div class="col-md-4">
-        <h3 class="bottom-margin-sm">Zoom to:</h3>
-        {{ wtf.quick_form(form) }}
-      </div> <!-- ends col 4 -->
+        <h3 class="bottom-margin-sm">Lat/Long Search:</h3>
+        {{ wtf.quick_form(form_LatLong) }}
+      </div> <!-- ends col 4 for Lat/Long Search-->
+      <div class="col-md-2 top-margin-lg">
+        <h3 class="text-center">--OR--</h3>
+      </div>
+      <div class="col-md-6">
+        <h3 class="bottom-margin-sm">Address Search:</h3>
+        {{ wtf.quick_form(form_Address) }}
+      </div> <!-- ends col 4 for Address Search -->
     </div> <!-- ends row -->
   </div> <!-- ends container -->
 {% endblock %}
