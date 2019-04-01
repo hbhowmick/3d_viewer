@@ -19,14 +19,46 @@
   <!-- ArcGIS API JS -->
   <script src="https://js.arcgis.com/4.10/"></script>
   <script>
+    // function getUrlParameter(name) {
+    //     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    //     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    //     var results = regex.exec(location.search);
+    //     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    //   };
+    //
+    //   console.log(getUrlParameter('id'));
+
+    var id = "{{ id }}"
+    console.log(id);
+
+
     require([
+      "esri/layers/FeatureLayer",
       "esri/Map",
       "esri/views/SceneView"
-    ], function(Map, SceneView) {
+    ], function(FeatureLayer, Map, SceneView) {
+
+      // Code to take in hosted feature layer from form
+      var layer = new FeatureLayer({
+        portalItem: {
+          id: id
+        }
+      });
+
+      layer
+        .when(function() {
+          return layer.queryExtent();
+        })
+
+        .then(function(response) {
+          view.goTo(response.extent);
+        });
+
       // Code to create the map and view will go here
       var map = new Map({
         basemap: "dark-gray",
-        ground: "world-elevation"
+        ground: "world-elevation",
+        layers: [layer]
       });
       var view = new SceneView({
         container: "viewDiv", // Reference to the DOM node that will contain the view
