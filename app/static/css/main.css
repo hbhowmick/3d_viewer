@@ -6,6 +6,11 @@ body {
   background-position: center top;
 }
 
+.esri-view-surface {
+  height: 81% !important;
+  background-image: none !important;
+}
+
 .btn {
   background-color: rgba(240,38,41,0.9);
   border-color: rgba(240,38,41,0.9);
