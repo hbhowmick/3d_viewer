@@ -4,7 +4,7 @@
 
 <!-- use blocks to customize base and other html files -->
 {% block title %}
-  Capstone
+  3D Viewer
 {% endblock %}
 
 
@@ -26,7 +26,7 @@
 <div class="row">
   <div class="col-md-12">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{ url_for('index') }}">Capstone</a>
+      <a class="navbar-brand" href="{{ url_for('index') }}">3D Viewer</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,20 +40,14 @@
           {% endif %}
             <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
           </li>
-          {% if title == '3D Scene' %}
+          {% if title == 'Scene' %}
           <li class="nav-item active">
           {% else %}
           <li class="nav-item">
           {% endif %}
-            <a class="nav-link" href="{{ url_for('scene') }}">3D Scene</a>
+            <a class="nav-link" href="{{ url_for('scene') }}">Scene</a>
           </li>
-          {% if title == 'Tilted Scene' %}
-          <li class="nav-item active">
-          {% else %}
-          <li class="nav-item">
-          {% endif %}
-            <a class="nav-link" href="{{ url_for('tilt') }}">Tilted Scene</a>
-          </li>
+
         </ul>
       </div>
     </nav>
@@ -68,15 +62,11 @@
   {% block app_content %}{% endblock %}
 
   <footer>
-    <div class="row top-margin-lg">
-      <div class="col-md-4">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div> <!-- ends col 4 -->
-      <div class="col-md-4">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div> <!-- ends col 4 -->
-      <div class="col-md-4">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="row">
+      <div id="footer_contact" class="col-md-12">
+        <h6>CONTACT</h6>
+        <p><a href="mailto:heather.m.cormier@gmail.com">heather.m.cormier@gmail.com</a></p>
+        <p><a href="https://heathercormier.weebly.com/gis-portfolio.html">GIS Portfolio</a></p>
       </div> <!-- ends col 4 -->
     </div> <!-- ends row -->
   </footer>
