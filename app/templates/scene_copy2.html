@@ -16,9 +16,6 @@
     body {
       background-image: none;
     }
-    #viewDiv {
-      height: 81%;
-    }
   </style>
 {% endblock %}
 
@@ -128,46 +125,46 @@
         });
 
 
+
       // the layer where the graphics are sketched
       var gLayer = new GraphicsLayer();
 
       // Code to create the map and view will go here
-      var map_2d = new Map({
+      var map = new Map({
         basemap: "dark-gray",
         ground: "world-elevation",
-        layers: [layer_2d, gLayer]
+        layers: [gLayer]
       });
 
-      var map_3d = new Map({
-        basemap: "dark-gray",
-        ground: "world-elevation",
-        layers: [layer_3d, gLayer]
-      });
+      map.add(layer_2d);
+      map.add(layer_3d);
+
 
       var mapview = new MapView({
         container: "viewDiv",
-        map: map_2d,
+        map: map,
         scale: 25000, // Sets the initial scale to 1:25,000
         center: [-71.06, 42.36], // Sets the center point of view with lon/lat
       });
 
       var sceneview = new SceneView({
         container: "viewDiv", // Reference to the DOM node that will contain the view
-        map: map_3d, // References the map object created above
+        map: map, // References the map object created above
         // scale: 25000, // Sets the initial scale to 1:25,000
         // center: [-71.06, 42.36], // Sets the center point of view with lon/lat
       });
 
 
+
+
       // create 2D view and and set active
       appConfig.mapView = mapview;
-      appConfig.mapView.map = map_2d;
+      appConfig.mapView.map = map;
       appConfig.activeView = appConfig.mapView;
 
       // create 3D view, won't initialize until container is set
       sceneview.container = null;
       appConfig.sceneView = sceneview;
-      appConfig.sceneView.map = map_3d;
 
       // switch the view between 2D and 3D each time the button is clicked
       switchButton.addEventListener("click", function(){
@@ -195,6 +192,10 @@
           switchButton.value = "2D";
         }
       }
+
+
+
+
 
 
 
@@ -228,7 +229,7 @@
       });
 
       // add an event listener for the Delete key to delete the graphics that are currently being updated
-      sceneview.on("key-up", function(evt) {
+      view.on("key-up", function(evt) {
         if (evt.key === "Delete") {
           gLayer.removeMany(sketchVM.updateGraphics);
           sketchVM.reset();
@@ -263,7 +264,7 @@
         });
       }
 
-      sceneview.ui.add("sketchPanel", "top-right");
+      view.ui.add("sketchPanel", "top-right");
     });
 
   </script>

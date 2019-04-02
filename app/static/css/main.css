@@ -6,11 +6,6 @@ body {
   background-position: center top;
 }
 
-.esri-view-surface {
-  height: 81% !important;
-  background-image: none !important;
-}
-
 .btn {
   background-color: rgba(240,38,41,0.9);
   border-color: rgba(240,38,41,0.9);
@@ -90,6 +85,54 @@ border: 1px solid black;
   background-color: rgba(100, 100, 100, 0.8);
   border: 2px solid #ccc;
 }
+
+#editArea {
+  background-color: white;
+}
+
+#infoDiv{
+  position: absolute;
+  top: 70px;
+  left: 15px;
+}
+
+#infoDiv input {
+  border: none;
+  box-shadow:  rgba(0, 0, 0, 0.3) 0px 1px 2px;
+}
+
+#sketchPanel {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.esri-button {
+  margin: 2px;
+}
+
+.esri-zoom {
+  position: fixed;
+  top: 110px;
+}
+
+.esri-navigation-toggle {
+  position: fixed;
+  top: 180px;
+}
+
+.esri-compass {
+  position: fixed;
+  top: 250px;
+}
+
+.esri-sketch {
+  position: fixed;
+  top: 80px;
+}
+
 
 footer {
   position: absolute;
